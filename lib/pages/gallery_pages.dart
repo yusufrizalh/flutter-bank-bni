@@ -32,11 +32,12 @@ class _GalleryPagesState extends State<GalleryPages>
               children: <Widget>[
                 Expanded(
                   child: DefaultTabController(
-                    length: 3,
+                    length: 6,
                     initialIndex: 0,
                     child: Column(
                       children: [
                         const TabBar(
+                          isScrollable: true,
                           labelColor: globalColor,
                           unselectedLabelColor: Colors.grey,
                           indicatorColor: globalColor,
@@ -56,6 +57,24 @@ class _GalleryPagesState extends State<GalleryPages>
                             ),
                             Tab(
                               text: "Gallery 3",
+                              icon: Icon(
+                                Icons.photo,
+                              ),
+                            ),
+                            Tab(
+                              text: "Gallery 4",
+                              icon: Icon(
+                                Icons.photo_camera,
+                              ),
+                            ),
+                            Tab(
+                              text: "Gallery 5",
+                              icon: Icon(
+                                Icons.camera_indoor,
+                              ),
+                            ),
+                            Tab(
+                              text: "Gallery 6",
                               icon: Icon(
                                 Icons.photo,
                               ),
@@ -100,6 +119,48 @@ class _GalleryPagesState extends State<GalleryPages>
                                     children: const [
                                       Text(
                                         "Gallery 3",
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(fontSize: 20),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              SelectionArea(
+                                child: Center(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: const [
+                                      Text(
+                                        "Gallery 4",
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(fontSize: 20),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              SelectionArea(
+                                child: Center(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: const [
+                                      Text(
+                                        "Gallery 5",
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(fontSize: 20),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              SelectionArea(
+                                child: Center(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: const [
+                                      Text(
+                                        "Gallery 6",
                                         textAlign: TextAlign.center,
                                         style: TextStyle(fontSize: 20),
                                       ),
