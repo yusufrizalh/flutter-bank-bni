@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_myapp/pages/account_pages.dart';
+import 'package:flutter_myapp/pages/contacts_pages.dart';
+import 'package:flutter_myapp/pages/events_pages.dart';
+import 'package:flutter_myapp/pages/gallery_pages.dart';
+import 'package:flutter_myapp/pages/home_pages.dart';
 
 /*
   # Widget berdasarkan nilai (state) didalamnya, dibagi menjadi 2 jenis:
@@ -139,30 +144,59 @@ class _HomePageState extends State<HomePage> {
         ListTile(
           leading: const Icon(Icons.home, color: iconColor),
           title: const Text("Home"),
-          onTap: () => debugPrint("Home Page is clicked"),
+          onTap: () {
+            // menuju ke halaman HomePages
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => const HomePages(title: "Home"),
+              ),
+            );
+          },
         ),
         ListTile(
           leading: const Icon(Icons.photo, color: iconColor),
           title: const Text("Gallery"),
           onTap: () {
-            debugPrint("Gallery Page is clicked");
+            // menuju ke halaman GalleryPages
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => const GalleryPages(title: "Gallery"),
+              ),
+            );
           },
         ),
         ListTile(
-          leading: const Icon(Icons.event, color: iconColor),
-          title: const Text("Events"),
-          onTap: () => debugPrint("Events Page is clicked"),
-        ),
+            leading: const Icon(Icons.event, color: iconColor),
+            title: const Text("Events"),
+            onTap: () {
+              // menuju ke halaman EventsPages
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const EventsPages(title: "Events"),
+                ),
+              );
+            }),
         ListTile(
-          leading: const Icon(Icons.contact_mail, color: iconColor),
-          title: const Text("Contacts"),
-          onTap: () => debugPrint("Contact Page is clicked"),
-        ),
+            leading: const Icon(Icons.contact_mail, color: iconColor),
+            title: const Text("Contacts"),
+            onTap: () {
+              // menuju ke halaman ContactsPages
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const ContactsPages(title: "Contacts"),
+                ),
+              );
+            }),
         ListTile(
           leading: const Icon(Icons.person, color: iconColor),
           title: const Text("Account"),
           onTap: () {
-            debugPrint("Account Page is clicked");
+            // menuju ke halaman AccountPages
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => const AccountPages(title: "Account"),
+              ),
+            );
           },
         ),
       ],
