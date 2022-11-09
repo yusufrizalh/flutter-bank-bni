@@ -4,6 +4,8 @@ import 'package:flutter_myapp/pages/contacts_pages.dart';
 import 'package:flutter_myapp/pages/events_pages.dart';
 import 'package:flutter_myapp/pages/gallery_pages.dart';
 import 'package:flutter_myapp/pages/home_pages.dart';
+// import 'package:flutter_myapp/products/data_page.dart';
+// import 'package:flutter_myapp/products/products_page.dart';
 
 /*
   # Widget berdasarkan nilai (state) didalamnya, dibagi menjadi 2 jenis:
@@ -177,7 +179,7 @@ class _HomePageState extends State<HomePage> {
               );
             }),
         ListTile(
-            leading: const Icon(Icons.contact_mail, color: iconColor),
+            leading: const Icon(Icons.contact_page, color: iconColor),
             title: const Text("Contacts"),
             onTap: () {
               // menuju ke halaman ContactsPages
@@ -194,11 +196,36 @@ class _HomePageState extends State<HomePage> {
             // menuju ke halaman AccountPages
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => const AccountPages(title: "Account"),
+                builder: (context) => const AccountPage(title: "Account"),
               ),
             );
           },
         ),
+        // ListTile(
+        //   leading: const Icon(Icons.shopping_bag, color: iconColor),
+        //   title: const Text("Products"),
+        //   onTap: () {
+        //     // menuju ke halaman AccountPages
+        //     Navigator.of(context).push(
+        //       MaterialPageRoute(
+        //         builder: (context) =>
+        //             const ProductsPage(title: "Products Catalog"),
+        //       ),
+        //     );
+        //   },
+        // ),
+        // ListTile(
+        //   leading: const Icon(Icons.data_array, color: iconColor),
+        //   title: const Text("Nested Data"),
+        //   onTap: () {
+        //     // menuju ke halaman DataPages
+        //     Navigator.of(context).push(
+        //       MaterialPageRoute(
+        //         builder: (context) => const DataPage(title: "Nested Data"),
+        //       ),
+        //     );
+        //   },
+        // ),
       ],
     );
   }
