@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_myapp/employees/employees_page.dart';
 import 'package:flutter_myapp/pages/account_pages.dart';
 import 'package:flutter_myapp/pages/contacts_pages.dart';
 import 'package:flutter_myapp/pages/events_pages.dart';
@@ -201,19 +202,19 @@ class _HomePageState extends State<HomePage> {
             );
           },
         ),
-        // ListTile(
-        //   leading: const Icon(Icons.shopping_bag, color: iconColor),
-        //   title: const Text("Products"),
-        //   onTap: () {
-        //     // menuju ke halaman AccountPages
-        //     Navigator.of(context).push(
-        //       MaterialPageRoute(
-        //         builder: (context) =>
-        //             const ProductsPage(title: "Products Catalog"),
-        //       ),
-        //     );
-        //   },
-        // ),
+        ListTile(
+          leading: const Icon(Icons.group, color: iconColor),
+          title: const Text("Employees"),
+          onTap: () {
+            // menuju ke halaman EmployeesPage
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) =>
+                    const EmployeesPage(title: "Employees List"),
+              ),
+            );
+          },
+        ),
         // ListTile(
         //   leading: const Icon(Icons.data_array, color: iconColor),
         //   title: const Text("Nested Data"),
