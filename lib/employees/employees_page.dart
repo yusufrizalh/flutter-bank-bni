@@ -15,7 +15,10 @@ class EmployeesPage extends StatefulWidget {
 class _EmployeesPageState extends State<EmployeesPage> {
   String url = "http://172.16.4.51/flutter-api/employees/getAllEmployees.php";
 
-  List<EmployeesModel> employeesList = []; // diawal masih kosong
+  List<EmployeesModel> employeesList =
+      []; // menampilkan semua data, diawal masih kosong
+  List<EmployeesModel> searchEmployeesList =
+      []; // menampilkan filtered data, diawal masih kosong
 
   Future<List<EmployeesModel>> getEmployeesList() async {
     try {
@@ -45,7 +48,8 @@ class _EmployeesPageState extends State<EmployeesPage> {
     super.initState();
     getEmployeesList().then((value) {
       setState(() {
-        employeesList = value;
+        searchEmployeesList = value;
+        employeesList = searchEmployeesList;
       });
     });
   }
@@ -64,13 +68,39 @@ class _EmployeesPageState extends State<EmployeesPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            // filter data employees
+            Container(
+              padding: const EdgeInsets.all(4),
+              child: TextField(
+                textInputAction: TextInputAction.search,
+                decoration: const InputDecoration(
+                  hintText: "Search Data",
+                  suffixIcon: Icon(
+                    Icons.search,
+                    color: globalColor,
+                  ),
+                ),
+                onChanged: (keyword) {
+                  // proses filtering data employees
+                  setState(() {
+                    employeesList = searchEmployeesList
+                        .where(
+                          (element) => (element.name!.toLowerCase().contains(
+                                keyword.toLowerCase(),
+                              )),
+                        )
+                        .toList();
+                  });
+                },
+              ),
+            ),
             Expanded(
               child: GridView.builder(
                 padding: const EdgeInsets.all(4),
                 shrinkWrap: true,
                 scrollDirection: Axis.vertical,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
+                  crossAxisCount: 2,
                   crossAxisSpacing: 8,
                   mainAxisSpacing: 8,
                   childAspectRatio: 1,
