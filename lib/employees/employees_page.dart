@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_myapp/employees/employee_create.dart';
 import 'package:flutter_myapp/employees/employee_detail.dart';
 import './models/employees_model.dart';
 import 'package:http/http.dart' as http;
@@ -63,6 +64,23 @@ class _EmployeesPageState extends State<EmployeesPage> {
         title: Text(widget.title),
         centerTitle: true,
         backgroundColor: globalColor,
+        actions: [
+          IconButton(
+            onPressed: () {
+              // membuka halaman EmployeeCreate
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) =>
+                    const EmployeeCreate(title: "Create New Employee"),
+              ));
+            },
+            icon: const Icon(Icons.add),
+          ),
+        ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => debugPrint("Create New Employee"),
+        backgroundColor: globalColor,
+        child: const Icon(Icons.add),
       ),
       body: Center(
         child: Column(
@@ -85,9 +103,13 @@ class _EmployeesPageState extends State<EmployeesPage> {
                   setState(() {
                     employeesList = searchEmployeesList
                         .where(
-                          (element) => (element.name!.toLowerCase().contains(
-                                keyword.toLowerCase(),
-                              )),
+                          (element) =>
+                              (element.name!.toLowerCase().contains(
+                                    keyword.toLowerCase(),
+                                  )) ||
+                              (element.address!.toLowerCase().contains(
+                                    keyword.toLowerCase(),
+                                  )),
                         )
                         .toList();
                   });
