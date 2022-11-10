@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_myapp/employees/employee_detail.dart';
 import './models/employees_model.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as converter;
@@ -76,28 +77,50 @@ class _EmployeesPageState extends State<EmployeesPage> {
                 ),
                 itemCount: employeesList.length,
                 itemBuilder: (context, index) {
-                  return Container(
-                    width: 100,
-                    height: 100,
-                    decoration: BoxDecoration(
-                      color: globalColor,
-                      image: DecorationImage(
-                        image: NetworkImage(employeesList[index].photo!),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    child: Stack(
-                      alignment: const AlignmentDirectional(0, 0),
-                      children: [
-                        Text(
-                          employeesList[index].name!,
-                          style: const TextStyle(
-                            fontSize: 14,
+                  return InkWell(
+                    onTap: () {
+                      // melihat EmployeeDetail pada Modal
+                      showModalBottomSheet(
+                        context: context,
+                        builder: (context) {
+                          return Container(
+                            width: double.infinity,
+                            height: 500,
                             color: globalColor,
-                            fontWeight: FontWeight.bold,
-                          ),
+                            alignment: Alignment.center,
+                            child: Padding(
+                              padding: const EdgeInsets.all(6),
+                              child: EmployeeDetail(
+                                employeesModel: employeesList[index],
+                              ),
+                            ),
+                          );
+                        },
+                      );
+                    },
+                    child: Container(
+                      width: 100,
+                      height: 100,
+                      decoration: BoxDecoration(
+                        color: globalColor,
+                        image: DecorationImage(
+                          image: NetworkImage(employeesList[index].photo!),
+                          fit: BoxFit.cover,
                         ),
-                      ],
+                      ),
+                      child: Stack(
+                        alignment: const AlignmentDirectional(0, 0),
+                        children: [
+                          Text(
+                            employeesList[index].name!,
+                            style: const TextStyle(
+                              fontSize: 14,
+                              color: globalColor,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   );
                 },
