@@ -117,8 +117,68 @@ class _EmployeesPageState extends State<EmployeesPage> {
               ),
             ),
             Expanded(
-              // ubah tampilan GridView menjadi ListView
-              child: ListView.builder(
+              // ada GridView.builder() dan ListView.builder()
+              child: GridView.builder(
+                padding: const EdgeInsets.all(4),
+                shrinkWrap: true,
+                scrollDirection: Axis.vertical,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3, // membagi layar menjadi 3 kolom
+                  crossAxisSpacing: 8,
+                  mainAxisSpacing: 8,
+                  childAspectRatio: 1,
+                ),
+                itemCount: employeesList.length,
+                itemBuilder: (context, index) {
+                  return InkWell(
+                    onTap: () {
+                      // melihat EmployeeDetail pada Modal
+                      showModalBottomSheet(
+                        context: context,
+                        builder: (context) {
+                          return Container(
+                            width: double.infinity,
+                            height: 500,
+                            color: globalColor,
+                            alignment: Alignment.center,
+                            child: Padding(
+                              padding: const EdgeInsets.all(6),
+                              child: EmployeeDetail(
+                                employeesModel: employeesList[index],
+                              ),
+                            ),
+                          );
+                        },
+                      );
+                    },
+                    child: Container(
+                      width: 100,
+                      height: 100,
+                      decoration: BoxDecoration(
+                        color: globalColor,
+                        image: DecorationImage(
+                          image: NetworkImage(employeesList[index].photo!),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      child: Stack(
+                        alignment: const AlignmentDirectional(0, 0),
+                        children: [
+                          Text(
+                            employeesList[index].name!,
+                            style: const TextStyle(
+                              fontSize: 14,
+                              color: globalColor,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              ),
+              /*ListView.builder(
                 padding: const EdgeInsets.all(6),
                 shrinkWrap: true,
                 scrollDirection: Axis.vertical,
@@ -132,6 +192,26 @@ class _EmployeesPageState extends State<EmployeesPage> {
                     child: Padding(
                       padding: const EdgeInsets.all(4),
                       child: ListTile(
+                        onTap: () {
+                          // membuka EmployeeDetail
+                          showModalBottomSheet(
+                            context: context,
+                            builder: (context) {
+                              return Container(
+                                width: double.infinity,
+                                height: 500,
+                                color: globalColor,
+                                alignment: Alignment.center,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(6),
+                                  child: EmployeeDetail(
+                                    employeesModel: employeesList[index],
+                                  ),
+                                ),
+                              );
+                            },
+                          );
+                        },
                         leading: Image(
                           image: NetworkImage(employeesList[index].photo!),
                           fit: BoxFit.cover,
@@ -151,7 +231,7 @@ class _EmployeesPageState extends State<EmployeesPage> {
                     ),
                   );
                 },
-              ),
+              ),*/
             ),
           ],
         ),
