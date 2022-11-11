@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_myapp/employees/employees_page.dart';
 import 'package:flutter_myapp/employees/sales_page.dart';
+import 'package:flutter_myapp/nested/nested_data.dart';
 import 'package:flutter_myapp/pages/account_pages.dart';
 import 'package:flutter_myapp/pages/contacts_pages.dart';
 import 'package:flutter_myapp/pages/events_pages.dart';
@@ -216,18 +217,18 @@ class _HomePageState extends State<HomePage> {
             );
           },
         ),
-        // ListTile(
-        //   leading: const Icon(Icons.data_array, color: iconColor),
-        //   title: const Text("Nested Data"),
-        //   onTap: () {
-        //     // menuju ke halaman DataPages
-        //     Navigator.of(context).push(
-        //       MaterialPageRoute(
-        //         builder: (context) => const DataPage(title: "Nested Data"),
-        //       ),
-        //     );
-        //   },
-        // ),
+        ListTile(
+          leading: const Icon(Icons.data_array, color: iconColor),
+          title: const Text("Nested Data"),
+          onTap: () {
+            // menuju ke halaman NestedData
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => const NestedData(title: "Nested Data"),
+              ),
+            );
+          },
+        ),
       ],
     );
   }

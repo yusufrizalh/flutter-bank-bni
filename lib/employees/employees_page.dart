@@ -118,7 +118,8 @@ class _EmployeesPageState extends State<EmployeesPage> {
             ),
             Expanded(
               // ada GridView.builder() dan ListView.builder()
-              child: GridView.builder(
+              child:
+                  /*GridView.builder(
                 padding: const EdgeInsets.all(4),
                 shrinkWrap: true,
                 scrollDirection: Axis.vertical,
@@ -177,8 +178,8 @@ class _EmployeesPageState extends State<EmployeesPage> {
                     ),
                   );
                 },
-              ),
-              /*ListView.builder(
+              ),*/
+                  ListView.builder(
                 padding: const EdgeInsets.all(6),
                 shrinkWrap: true,
                 scrollDirection: Axis.vertical,
@@ -231,7 +232,7 @@ class _EmployeesPageState extends State<EmployeesPage> {
                     ),
                   );
                 },
-              ),*/
+              ),
             ),
           ],
         ),
