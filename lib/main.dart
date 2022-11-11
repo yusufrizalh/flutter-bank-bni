@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_myapp/employees/employees_page.dart';
+import 'package:flutter_myapp/employees/sales_page.dart';
 import 'package:flutter_myapp/pages/account_pages.dart';
 import 'package:flutter_myapp/pages/contacts_pages.dart';
 import 'package:flutter_myapp/pages/events_pages.dart';
