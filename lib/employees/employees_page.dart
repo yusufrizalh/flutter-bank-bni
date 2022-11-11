@@ -117,61 +117,36 @@ class _EmployeesPageState extends State<EmployeesPage> {
               ),
             ),
             Expanded(
-              child: GridView.builder(
-                padding: const EdgeInsets.all(4),
+              // ubah tampilan GridView menjadi ListView
+              child: ListView.builder(
+                padding: const EdgeInsets.all(6),
                 shrinkWrap: true,
                 scrollDirection: Axis.vertical,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 8,
-                  mainAxisSpacing: 8,
-                  childAspectRatio: 1,
-                ),
                 itemCount: employeesList.length,
                 itemBuilder: (context, index) {
-                  return InkWell(
-                    onTap: () {
-                      // melihat EmployeeDetail pada Modal
-                      showModalBottomSheet(
-                        context: context,
-                        builder: (context) {
-                          return Container(
-                            width: double.infinity,
-                            height: 500,
-                            color: globalColor,
-                            alignment: Alignment.center,
-                            child: Padding(
-                              padding: const EdgeInsets.all(6),
-                              child: EmployeeDetail(
-                                employeesModel: employeesList[index],
-                              ),
-                            ),
-                          );
-                        },
-                      );
-                    },
-                    child: Container(
-                      width: 100,
-                      height: 100,
-                      decoration: BoxDecoration(
-                        color: globalColor,
-                        image: DecorationImage(
+                  return Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      side: const BorderSide(color: globalColor, width: 2),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(4),
+                      child: ListTile(
+                        leading: Image(
                           image: NetworkImage(employeesList[index].photo!),
                           fit: BoxFit.cover,
+                          width: 70,
+                          height: 70,
                         ),
-                      ),
-                      child: Stack(
-                        alignment: const AlignmentDirectional(0, 0),
-                        children: [
-                          Text(
-                            employeesList[index].name!,
-                            style: const TextStyle(
-                              fontSize: 14,
-                              color: globalColor,
-                              fontWeight: FontWeight.bold,
-                            ),
+                        title: Text(
+                          "Name: ${employeesList[index].name}",
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
                           ),
-                        ],
+                        ),
+                        subtitle: Text(
+                          "Salary: ${employeesList[index].salary}\nAddress: ${employeesList[index].address}",
+                        ),
                       ),
                     ),
                   );
